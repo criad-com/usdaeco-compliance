@@ -1,0 +1,14 @@
+{
+  "keywords": [
+    "UsdAecoComplianceValidators"
+  ],
+  "severity_overrides": {
+    "RequirementUnmeasurable": "error",
+    "SpecificationWithoutApplicability": "error",
+    "ComplianceStale": "error",
+    "MissingDevice": "error",
+    "MisplacedDevice": "error",
+    "UnapprovedProduct": "error",
+    "MissingBinding": "error"
+  }
+}

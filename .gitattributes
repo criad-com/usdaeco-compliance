@@ -1,0 +1,2 @@
+# Keep USD's canonical serializer output, including its final separator line.
+*.usda whitespace=-blank-at-eof

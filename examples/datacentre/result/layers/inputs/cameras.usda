@@ -1,0 +1,42 @@
+#usda 1.0
+
+def Scope "Renders"
+{
+    def Camera "elevation"
+    {
+        float horizontalAperture = 170
+        token projection = "orthographic"
+        float verticalAperture = 106.25
+        double3 xformOp:translate = (8, 5, 50)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Camera "plan"
+    {
+        float horizontalAperture = 170
+        token projection = "orthographic"
+        float verticalAperture = 106.25
+        double3 xformOp:translate = (38, 5, 50)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Camera "facility"
+    {
+        float2 clippingRange = (57.6, 1000)
+        float horizontalAperture = 880
+        token projection = "orthographic"
+        float verticalAperture = 550
+        double3 xformOp:translate = (36, 12, 60)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Camera "overview"
+    {
+        float horizontalAperture = 65
+        token projection = "orthographic"
+        float verticalAperture = 40.625
+        matrix4d xformOp:transform = ( (-0.9203309184584746, -0.3911406403448515, 1.3877787807814457e-17, 0), (0.12378524019747981, -0.2912593886999526, 0.9486016987141559, -0), (-0.3710366758672689, 0.8730274726288684, 0.31647245882796476, 0), (15.5, 3.9999999999999996, 2.6, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+

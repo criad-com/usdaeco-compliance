@@ -1,0 +1,80 @@
+#usda 1.0
+(
+    subLayers = [@usd/schema.usda@, @usdGeom/schema.usda@, @usdAeco/schema.usda@]
+)
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "usdAecoCompliance"
+        string libraryPath = "./"
+        bool skipCodeGeneration = true
+        bool useLiteralIdentifier = true
+    }
+) {}
+
+class AecoSpecification "AecoSpecification" (
+    inherits = </Typed>
+    doc = "A requirement document's applicability and clauses: a record referent, not a product kind. IDS specification / IfcObjective grouping."
+    customData = {
+        string className = "Specification"
+        token[] fallbackTypes = ["Scope"]
+    }
+) {
+    string aeco:spec:title = "" (doc = "Human title of this specification.")
+    string aeco:spec:source = "" (doc = "Document and clause citation; illustrative sources must say so.")
+    rel aeco:spec:sourceDocument (doc = "Optional relationship to a document record.")
+    string[] aeco:spec:appliesToClassification = [] (doc = "System-qualified classification selectors. OR within the array; AND with a nonempty type filter.")
+    rel aeco:spec:appliesToTypes (doc = "Catalog class paths matched through the element's composed inherits arcs.")
+    uniform token aeco:spec:kind = "regulation" (
+        allowedTokens = ["regulation", "specification", "datasheet", "standard"]
+        doc = "Document authority category, never an element kind. Composition strength is USD layer order."
+    )
+}
+
+class AecoRequirement "AecoRequirement" (
+    inherits = </Typed>
+    doc = "One independently addressable clause, a child record of a specification. IDS requirement / IfcMetric."
+    customData = {
+        string className = "Requirement"
+        token[] fallbackTypes = ["Scope"]
+    }
+) {
+    string aeco:req:measure = "" (doc = "An element property or a measured quantity token; measured tokens use the derived body and spatial spine.")
+    uniform token aeco:req:operator = "between" (
+        allowedTokens = ["eq", "ne", "lt", "le", "gt", "ge", "between", "in"]
+        doc = "Comparison operator. Between includes both bounds; numeric tolerance expands accepted equality/bounds."
+    )
+    double[] aeco:req:values = [] (doc = "Finite numeric benchmarks in the declared unit; one for comparisons, two for between, one or more for in.")
+    string[] aeco:req:tokens = [] (doc = "String benchmarks for eq, ne or in; mutually exclusive with values.")
+    string aeco:req:unit = "m" (doc = "SI unit: m for length, m2 for area, 1 for dimensionless values and tokens.")
+    double aeco:req:tolerance = 0 (doc = "Finite nonnegative comparison tolerance in the declared unit.")
+    uniform token aeco:req:severity = "error" (
+        allowedTokens = ["error", "warn"]
+        doc = "Error for a hard requirement; warn for an advisory requirement."
+    )
+    string aeco:req:rationale = "" (doc = "Reason for the clause, including illustrative status where applicable.")
+}
+
+class "AecoComplianceAPI" (
+    inherits = </APISchemaBase>
+    doc = "Derived compliance result decorating an existing element; never changes its identity, type or placement."
+    customData = {
+        string className = "ComplianceAPI"
+        token apiSchemaType = "singleApply"
+        token[] apiSchemaCanOnlyApplyTo = ["Imageable"]
+    }
+) {
+    rel aeco:compliance:specifications (
+        aecoDerived = true
+        doc = "The specifications actually checked, authored by the evaluator in its result layer."
+    )
+    uniform token aeco:compliance:status = "unchecked" (
+        aecoDerived = true
+        allowedTokens = ["unchecked", "pass", "fail", "warn", "notApplicable"]
+        doc = "Aggregate result. Unmeasurable clauses fail; absence of applicable clauses is notApplicable."
+    )
+    string aeco:compliance:report = "" (
+        aecoDerived = true
+        doc = "One line per clause: citation, measure, measured value, unit and verdict. Input fingerprint is result-layer metadata."
+    )
+}

@@ -1,0 +1,551 @@
+{
+  "layouts": {
+    "relocated": {
+      "ResultStale": "PASS",
+      "checks": 48,
+      "failed": 0,
+      "not_run": 0,
+      "pytest_passed": 40,
+      "results": [
+        {
+          "detail": "usdAeco 0.9.2, usdAecoCompliance 0.1.2",
+          "name": "plugin requirements",
+          "status": "PASS"
+        },
+        {
+          "detail": "usdAecoValidators imported; no skip path",
+          "name": "core validators import",
+          "status": "PASS"
+        },
+        {
+          "detail": "8 declared validators loaded",
+          "name": "UsdAecoValidators listing",
+          "status": "PASS"
+        },
+        {
+          "detail": "7 declared validators loaded",
+          "name": "UsdAecoComplianceValidators listing",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 applied APIs, 2 concrete types resolve",
+          "name": "schema registry",
+          "status": "PASS"
+        },
+        {
+          "detail": "2 cases passed",
+          "name": "CanApplyAPI restrictions",
+          "status": "PASS"
+        },
+        {
+          "detail": "",
+          "name": "derived result metadata",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 examples, 0 errors (expected 0), 0 warnings",
+          "name": "examples compose and validate",
+          "status": "PASS"
+        },
+        {
+          "detail": "MIT (declared)",
+          "name": "S01",
+          "status": "PASS"
+        },
+        {
+          "detail": "readme",
+          "name": "S02",
+          "status": "PASS"
+        },
+        {
+          "detail": "metadata",
+          "name": "S03",
+          "status": "PASS"
+        },
+        {
+          "detail": "dependency pins",
+          "name": "S04",
+          "status": "PASS"
+        },
+        {
+          "detail": "flake",
+          "name": "S05",
+          "status": "PASS"
+        },
+        {
+          "detail": "layout",
+          "name": "S06",
+          "status": "PASS"
+        },
+        {
+          "detail": "global metadata",
+          "name": "S07",
+          "status": "PASS"
+        },
+        {
+          "detail": "classes",
+          "name": "S08",
+          "status": "PASS"
+        },
+        {
+          "detail": "namespaces",
+          "name": "S09",
+          "status": "PASS"
+        },
+        {
+          "detail": "applicability",
+          "name": "S10",
+          "status": "PASS"
+        },
+        {
+          "detail": "usdGenSchema --validate clean; compiler compatibility only",
+          "name": "S11",
+          "status": "PASS"
+        },
+        {
+          "detail": "resource plugin",
+          "name": "S12",
+          "status": "PASS"
+        },
+        {
+          "detail": "user docs",
+          "name": "S13",
+          "status": "PASS"
+        },
+        {
+          "detail": "validator descriptor",
+          "name": "S14",
+          "status": "PASS"
+        },
+        {
+          "detail": "validator tokens",
+          "name": "S15",
+          "status": "PASS"
+        },
+        {
+          "detail": "7 validators discovered and loaded",
+          "name": "S16",
+          "status": "PASS"
+        },
+        {
+          "detail": "tests",
+          "name": "S17",
+          "status": "PASS"
+        },
+        {
+          "detail": "companion",
+          "name": "S18",
+          "status": "PASS"
+        },
+        {
+          "detail": "profile",
+          "name": "S19",
+          "status": "PASS"
+        },
+        {
+          "detail": "usecase",
+          "name": "S20",
+          "status": "PASS"
+        },
+        {
+          "detail": "example files",
+          "name": "S21",
+          "status": "PASS"
+        },
+        {
+          "detail": "example manifest",
+          "name": "S22",
+          "status": "PASS"
+        },
+        {
+          "detail": "render caps",
+          "name": "S23",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 stage roots compose without family plugins",
+          "name": "S24",
+          "status": "PASS"
+        },
+        {
+          "detail": "terms",
+          "name": "S25",
+          "status": "PASS"
+        },
+        {
+          "detail": "check contract",
+          "name": "S26",
+          "status": "PASS"
+        },
+        {
+          "detail": "12480 prims, 0 composition errors in relocated plugin-free result",
+          "name": "S27",
+          "status": "PASS"
+        },
+        {
+          "detail": "stock Embree render: 1280x800, 140549 bytes, non-uniform",
+          "name": "S28",
+          "status": "PASS"
+        },
+        {
+          "detail": "0 asset paths use example inputs/, archived layers or documented resolver tokens",
+          "name": "S29",
+          "status": "PASS"
+        },
+        {
+          "detail": "findings and committed result match; 12480 plugin-free prims; 4 non-blank renders; source pinned; elapsed 57.985s / budget 180s",
+          "name": "example harness",
+          "status": "PASS"
+        },
+        {
+          "detail": "10 pass, 1 fail; two clauses name 1.65 m",
+          "name": "iris acceptance",
+          "status": "PASS"
+        },
+        {
+          "detail": "0 errors, 2 warnings",
+          "name": "core validators on iris result",
+          "status": "PASS"
+        },
+        {
+          "detail": "186 facility-derived symbols",
+          "name": "publication representation marks",
+          "status": "PASS"
+        },
+        {
+          "detail": "12266 source prims; identities, transforms and mesh geometry unchanged",
+          "name": "full pinned facility preserved",
+          "status": "PASS"
+        },
+        {
+          "detail": "11 original readers coloured; three illustrative bands each",
+          "name": "reader body colours and clause envelopes",
+          "status": "PASS"
+        },
+        {
+          "detail": "failing body and hard height band in view; drawing sheet outside view",
+          "name": "vanilla camera frames facility reader",
+          "status": "PASS"
+        },
+        {
+          "detail": "",
+          "name": "illustrative conversion reproducible",
+          "status": "PASS"
+        },
+        {
+          "detail": "both hard-source layers muted: 11 pass, 0 fail",
+          "name": "authority muting audit",
+          "status": "PASS"
+        },
+        {
+          "detail": "2954 core elements unchanged by muting",
+          "name": "identity and transforms preserved",
+          "status": "PASS"
+        },
+        {
+          "detail": "40 passed in 1.23s",
+          "name": "pytest",
+          "status": "PASS"
+        }
+      ],
+      "structure_passed": 29
+    },
+    "working": {
+      "ResultStale": "PASS",
+      "checks": 48,
+      "failed": 0,
+      "not_run": 0,
+      "pytest_passed": 40,
+      "results": [
+        {
+          "detail": "usdAeco 0.9.2, usdAecoCompliance 0.1.2",
+          "name": "plugin requirements",
+          "status": "PASS"
+        },
+        {
+          "detail": "usdAecoValidators imported; no skip path",
+          "name": "core validators import",
+          "status": "PASS"
+        },
+        {
+          "detail": "8 declared validators loaded",
+          "name": "UsdAecoValidators listing",
+          "status": "PASS"
+        },
+        {
+          "detail": "7 declared validators loaded",
+          "name": "UsdAecoComplianceValidators listing",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 applied APIs, 2 concrete types resolve",
+          "name": "schema registry",
+          "status": "PASS"
+        },
+        {
+          "detail": "2 cases passed",
+          "name": "CanApplyAPI restrictions",
+          "status": "PASS"
+        },
+        {
+          "detail": "",
+          "name": "derived result metadata",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 examples, 0 errors (expected 0), 0 warnings",
+          "name": "examples compose and validate",
+          "status": "PASS"
+        },
+        {
+          "detail": "MIT (declared)",
+          "name": "S01",
+          "status": "PASS"
+        },
+        {
+          "detail": "readme",
+          "name": "S02",
+          "status": "PASS"
+        },
+        {
+          "detail": "metadata",
+          "name": "S03",
+          "status": "PASS"
+        },
+        {
+          "detail": "dependency pins",
+          "name": "S04",
+          "status": "PASS"
+        },
+        {
+          "detail": "flake",
+          "name": "S05",
+          "status": "PASS"
+        },
+        {
+          "detail": "layout",
+          "name": "S06",
+          "status": "PASS"
+        },
+        {
+          "detail": "global metadata",
+          "name": "S07",
+          "status": "PASS"
+        },
+        {
+          "detail": "classes",
+          "name": "S08",
+          "status": "PASS"
+        },
+        {
+          "detail": "namespaces",
+          "name": "S09",
+          "status": "PASS"
+        },
+        {
+          "detail": "applicability",
+          "name": "S10",
+          "status": "PASS"
+        },
+        {
+          "detail": "usdGenSchema --validate clean; compiler compatibility only",
+          "name": "S11",
+          "status": "PASS"
+        },
+        {
+          "detail": "resource plugin",
+          "name": "S12",
+          "status": "PASS"
+        },
+        {
+          "detail": "user docs",
+          "name": "S13",
+          "status": "PASS"
+        },
+        {
+          "detail": "validator descriptor",
+          "name": "S14",
+          "status": "PASS"
+        },
+        {
+          "detail": "validator tokens",
+          "name": "S15",
+          "status": "PASS"
+        },
+        {
+          "detail": "7 validators discovered and loaded",
+          "name": "S16",
+          "status": "PASS"
+        },
+        {
+          "detail": "tests",
+          "name": "S17",
+          "status": "PASS"
+        },
+        {
+          "detail": "companion",
+          "name": "S18",
+          "status": "PASS"
+        },
+        {
+          "detail": "profile",
+          "name": "S19",
+          "status": "PASS"
+        },
+        {
+          "detail": "usecase",
+          "name": "S20",
+          "status": "PASS"
+        },
+        {
+          "detail": "example files",
+          "name": "S21",
+          "status": "PASS"
+        },
+        {
+          "detail": "example manifest",
+          "name": "S22",
+          "status": "PASS"
+        },
+        {
+          "detail": "render caps",
+          "name": "S23",
+          "status": "PASS"
+        },
+        {
+          "detail": "1 stage roots compose without family plugins",
+          "name": "S24",
+          "status": "PASS"
+        },
+        {
+          "detail": "terms",
+          "name": "S25",
+          "status": "PASS"
+        },
+        {
+          "detail": "check contract",
+          "name": "S26",
+          "status": "PASS"
+        },
+        {
+          "detail": "12480 prims, 0 composition errors in relocated plugin-free result",
+          "name": "S27",
+          "status": "PASS"
+        },
+        {
+          "detail": "stock Embree render: 1280x800, 140549 bytes, non-uniform",
+          "name": "S28",
+          "status": "PASS"
+        },
+        {
+          "detail": "0 asset paths use example inputs/, archived layers or documented resolver tokens",
+          "name": "S29",
+          "status": "PASS"
+        },
+        {
+          "detail": "findings and committed result match; 12480 plugin-free prims; 4 non-blank renders; source pinned; elapsed 57.844s / budget 180s",
+          "name": "example harness",
+          "status": "PASS"
+        },
+        {
+          "detail": "10 pass, 1 fail; two clauses name 1.65 m",
+          "name": "iris acceptance",
+          "status": "PASS"
+        },
+        {
+          "detail": "0 errors, 2 warnings",
+          "name": "core validators on iris result",
+          "status": "PASS"
+        },
+        {
+          "detail": "186 facility-derived symbols",
+          "name": "publication representation marks",
+          "status": "PASS"
+        },
+        {
+          "detail": "12266 source prims; identities, transforms and mesh geometry unchanged",
+          "name": "full pinned facility preserved",
+          "status": "PASS"
+        },
+        {
+          "detail": "11 original readers coloured; three illustrative bands each",
+          "name": "reader body colours and clause envelopes",
+          "status": "PASS"
+        },
+        {
+          "detail": "failing body and hard height band in view; drawing sheet outside view",
+          "name": "vanilla camera frames facility reader",
+          "status": "PASS"
+        },
+        {
+          "detail": "",
+          "name": "illustrative conversion reproducible",
+          "status": "PASS"
+        },
+        {
+          "detail": "both hard-source layers muted: 11 pass, 0 fail",
+          "name": "authority muting audit",
+          "status": "PASS"
+        },
+        {
+          "detail": "2954 core elements unchanged by muting",
+          "name": "identity and transforms preserved",
+          "status": "PASS"
+        },
+        {
+          "detail": "40 passed in 1.05s",
+          "name": "pytest",
+          "status": "PASS"
+        }
+      ],
+      "structure_passed": 29
+    }
+  },
+  "pins": {
+    "axis": {
+      "library": "usdAecoAxis",
+      "ref": "v0.1.2",
+      "repo": "usdaeco-axis"
+    },
+    "core": {
+      "library": "usdAeco",
+      "ref": "v0.9.2",
+      "repo": "usdaeco-core"
+    },
+    "datacentre": {
+      "library": null,
+      "ref": "v0.4.6",
+      "repo": "usdaeco-datacentre"
+    },
+    "toolchain": {
+      "library": null,
+      "ref": "v0.3.8",
+      "repo": "usdaeco-toolchain"
+    }
+  },
+  "result_bytes": 3884764,
+  "result_prim_count": 12480,
+  "source": {
+    "layers": [
+      {
+        "bytes": 332637,
+        "path": "dc.geometry.usdc",
+        "sha256": "d73387613389fda72868152abc29f0ccfcae3f092f274e99bc3fb7b88998ec5c"
+      },
+      {
+        "bytes": 1471930,
+        "path": "dc.semantics.usdc",
+        "sha256": "b857167e8555ee82f050c788b5664eab0628f4aa41921766eb0defb8c3699af7"
+      },
+      {
+        "bytes": 517,
+        "path": "dc.usda",
+        "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+      }
+    ],
+    "manifest_sha256": "5e16cacc9fd6b4151262d1c8a910ebbaa28d4d813ab7723465975022efeac0c8",
+    "mode": "pinned",
+    "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+  },
+  "version": "0.1.2"
+}

@@ -1,0 +1,19 @@
+#usda 1.0
+(
+    subLayers = [@../schema.usda@]
+)
+over "AecoSpecification" (
+    customData = {
+        string userDocBrief = "Document applicability and its independently addressable clauses."
+    }
+) {}
+over "AecoRequirement" (
+    customData = {
+        string userDocBrief = "A measured quantity or property comparison, with unit, tolerance and severity."
+    }
+) {}
+over "AecoComplianceAPI" (
+    customData = {
+        string userDocBrief = "Derived checked specifications, aggregate status and per-clause report on an element."
+    }
+) {}

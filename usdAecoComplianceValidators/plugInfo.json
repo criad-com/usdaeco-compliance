@@ -1,0 +1,42 @@
+{
+  "Plugins": [
+    {
+      "Name": "usdAecoComplianceValidators",
+      "Type": "python",
+      "Info": {
+        "Validators": {
+          "RequirementUnmeasurableChecker": {
+            "doc": "Reject unknown measures, missing bodies/properties and malformed clauses.",
+            "schemaTypes": [
+              "UsdAecoComplianceRequirement"
+            ]
+          },
+          "SpecificationWithoutApplicabilityChecker": {
+            "doc": "Require classification or type applicability.",
+            "schemaTypes": [
+              "UsdAecoComplianceSpecification"
+            ]
+          },
+          "ComplianceStaleChecker": {
+            "doc": "Require result fingerprints to match composed input data."
+          },
+          "MissingDeviceChecker": {
+            "doc": "Find specifications matching no devices."
+          },
+          "MisplacedDeviceChecker": {
+            "doc": "Report measured values outside a placement clause."
+          },
+          "UnapprovedProductChecker": {
+            "doc": "Report products failing catalog property clauses."
+          },
+          "MissingBindingChecker": {
+            "doc": "Report absent or ambiguous door associations."
+          },
+          "keywords": [
+            "UsdAecoComplianceValidators"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+/out/
+/examples/*/out/
+/result
+/result-*
+/flake.lock
+/check.json
+/STEERING.md
+/examples/*/inputs/source

@@ -1,0 +1,148 @@
+{
+  "actual_findings_sha256": "d97f13581f610a58528f19c23cad1ed6ddcb45539ff348f5035fbd7a47a567da",
+  "datacentre": {
+    "ref": "v0.4.6",
+    "variant": "iris"
+  },
+  "facility": "demo-datacentre-01",
+  "findings_sha256": "d97f13581f610a58528f19c23cad1ed6ddcb45539ff348f5035fbd7a47a567da",
+  "pins": {
+    "axis": {
+      "library": "usdAecoAxis",
+      "ref": "v0.1.2",
+      "repo": "usdaeco-axis"
+    },
+    "core": {
+      "library": "usdAeco",
+      "ref": "v0.9.2",
+      "repo": "usdaeco-core"
+    },
+    "datacentre": {
+      "library": null,
+      "ref": "v0.4.6",
+      "repo": "usdaeco-datacentre"
+    },
+    "toolchain": {
+      "library": null,
+      "ref": "v0.3.8",
+      "repo": "usdaeco-toolchain"
+    }
+  },
+  "renders": [
+    {
+      "bytes": 128812,
+      "height": 800,
+      "path": "renders/elevation.png",
+      "sha256": "e4ddb6439503033a2a7feece337b4c581aae2bc21d522751b1cfb7a60354f089",
+      "width": 1280
+    },
+    {
+      "bytes": 250836,
+      "height": 800,
+      "path": "renders/facility.png",
+      "sha256": "1ac8bda77d1677935b924f68859577876e2add51b47bc99fcf72e178804df095",
+      "width": 1280
+    },
+    {
+      "bytes": 140234,
+      "height": 800,
+      "path": "renders/overview.png",
+      "sha256": "91312d82d9320c33751f5f9ef2d766164c225970673d46cb9e805e0133f99b61",
+      "width": 1280
+    },
+    {
+      "bytes": 126008,
+      "height": 800,
+      "path": "renders/plan.png",
+      "sha256": "332dd7b49d87fc1c303094f848b43aeaf354b69684c0ada0affdcfcd7cf7516f",
+      "width": 1280
+    }
+  ],
+  "result": {
+    "bytes": 3884764,
+    "files": [
+      {
+        "bytes": 773,
+        "path": "result/README.md",
+        "sha256": "8d04fce26deec3a1d2d23c4e66a7ef2d98319b2795379773e1e24831b2c01b68"
+      },
+      {
+        "bytes": 2139157,
+        "normalized_sha256": "d4b2f8245837555186ff2882ef51f3fca56ad043671907f0661a8ce8ab59d487",
+        "path": "result/example.usdc",
+        "sha256": "b9eec7582fad856df82b0bd1204f417fcd9138b9a62ecc2bb290d1ad71699bc4"
+      },
+      {
+        "bytes": 1343,
+        "path": "result/layers/inputs/01-accessibility.usda",
+        "sha256": "c1a2b0f39f0545ce6850f9ec58323022b48e6d2d37260fa078b5eb2c3ecc0079"
+      },
+      {
+        "bytes": 2356,
+        "path": "result/layers/inputs/02-employer-security.usda",
+        "sha256": "e6f25911346e3f04ccc533adedf276e56754d30f2d69530a81244ab748ac7195"
+      },
+      {
+        "bytes": 1326,
+        "path": "result/layers/inputs/03-reader-datasheet.usda",
+        "sha256": "3cd0410f98289522743a78751a9c688a8a40f8dd2340a1b9fe5adb62931b6c9a"
+      },
+      {
+        "bytes": 1382,
+        "path": "result/layers/inputs/cameras.usda",
+        "sha256": "eb544fcd8add922895453b063217ed9c8e9d5551a5819787338e29762c673b7b"
+      },
+      {
+        "bytes": 17629,
+        "path": "result/layers/out/compliance.usda",
+        "sha256": "38673bf5d6edfb154cd1d831c25e1136ee1b482771b8a57a6852064ca84582c9"
+      },
+      {
+        "bytes": 1340224,
+        "path": "result/layers/out/diagrams.usda",
+        "sha256": "85987014e2caca96b07f90558b171f92d77f325acdb1577fa54f00ee0137d132"
+      },
+      {
+        "bytes": 240025,
+        "path": "result/layers/out/presentation.usda",
+        "sha256": "dc3b0969d23cfa3909413aaf6489e4b36ee340f08eeeb58af2e337e51158fe5a"
+      },
+      {
+        "bytes": 140549,
+        "path": "result/vanilla.png",
+        "sha256": "2b3d1b3134cc41a65c6215c9c04d709f3d97dd3fcc68a5befffb4c9451b3c2d8"
+      }
+    ],
+    "normalization": "sdf-usda-v1",
+    "prim_count": 12480,
+    "vanilla": {
+      "bytes": 140549,
+      "height": 800,
+      "path": "result/vanilla.png",
+      "sha256": "2b3d1b3134cc41a65c6215c9c04d709f3d97dd3fcc68a5befffb4c9451b3c2d8",
+      "width": 1280
+    }
+  },
+  "source": {
+    "layers": [
+      {
+        "bytes": 332637,
+        "path": "dc.geometry.usdc",
+        "sha256": "d73387613389fda72868152abc29f0ccfcae3f092f274e99bc3fb7b88998ec5c"
+      },
+      {
+        "bytes": 1471930,
+        "path": "dc.semantics.usdc",
+        "sha256": "b857167e8555ee82f050c788b5664eab0628f4aa41921766eb0defb8c3699af7"
+      },
+      {
+        "bytes": 517,
+        "path": "dc.usda",
+        "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+      }
+    ],
+    "manifest_sha256": "5e16cacc9fd6b4151262d1c8a910ebbaa28d4d813ab7723465975022efeac0c8",
+    "mode": "pinned",
+    "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+  }
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usdaeco-compliance"
+version = "0.1.2"
+requires-python = ">=3.11"
+dependencies = ["PyYAML>=6,<7", "usdaeco-toolchain>=0.3.2,<0.4"]
+
+[project.scripts]
+aeco-compliance = "usdaeco_compliance.cli:main"
+
+[tool.setuptools]
+packages = ["usdaeco_compliance", "usdAecoComplianceValidators"]
+package-dir = {usdaeco_compliance = "tools/usdaeco_compliance", usdAecoComplianceValidators = "usdAecoComplianceValidators"}
+
+[tool.setuptools.package-data]
+usdAecoComplianceValidators = ["plugInfo.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["testenv"]
+python_files = ["test*.py"]
