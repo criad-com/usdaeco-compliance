@@ -139,6 +139,6 @@ editable source/result composition, whose layer provenance is preserved separate
 
 ## 9 Status
 
-Version 0.1.2: codeless schema, YAML converter, five measured tokens, CLI,
+Version 0.1.3: codeless schema, YAML converter, five measured tokens, CLI,
 seven validators, seeded defects, an iris example, two facility views and two preserved diagram figures.
 Acceptance evidence and deviations are maintained in [validation.md](validation.md).

@@ -54,7 +54,7 @@ on `PATH`. These relative paths assume sibling checkouts:
 ```sh
 export TOOLCHAIN_DIR=../usdaeco-toolchain
 export CORE_DIR=../usdaeco-core
-export CORE_PLUGIN_DIR="$CORE_DIR/out/plugins/usdAeco/resources"
+export CORE_PLUGIN_DIR="$CORE_DIR/usdAeco"
 export AECO_DATACENTRE_ROOT=../usdaeco-datacentre
 export PXR_PLUGINPATH_NAME="$CORE_PLUGIN_DIR:$PWD/usdAecoCompliance:$PWD/usdAecoComplianceValidators"
 export PYTHON=python
@@ -65,6 +65,8 @@ env -u PYTHONPATH python -m pytest -q
 
 `check.py` prints the family `N checks, M failed` summary. Missing core validators
 are a setup failure, never a skipped check. Tests insert `tools/` into `sys.path`.
+The committed source plugin above carries the checked core version; an installed
+plugin may instead be selected with `CORE_PLUGIN_DIR` after verifying its version.
 To call the companion directly from source:
 
 ```sh
@@ -81,8 +83,8 @@ resolution is not yet proven in this environment; see [validation evidence](docs
 
 ## Family
 
-Requires `usdAeco >=0.9.2,<1.0`. Checked pins are core v0.9.2, axis v0.1.2,
-toolchain v0.3.8 and data centre v0.4.6. Axis is an integration pin; compliance
+Requires `usdAeco >=0.9.2,<1.0`. Checked pins are core v0.9.5, axis v0.1.5,
+toolchain v0.3.10 and data centre v0.4.8. Axis is an integration pin; compliance
 does not import its schema or depend on another kind library. Device queries
 read core identity, classification, inherited types, spatial containment and
 marked body geometry. The scenarios family manifest and family board consume
@@ -101,8 +103,8 @@ this repository's manifest and results.
 
 ## Status
 
-Version 0.1.2: **48 checks, 0 failed; structure 29/0; pytest 40 passed**.
-Facility render views and portable source composition are verified; see
+Version 0.1.3: **48 checks, 0 failed; structure 29/0; pytest 40 passed**.
+Public release pins, unchanged result layers and fresh stock renders are verified; see
 [validation evidence](docs/validation.md).
 The iris example demonstrates eleven readers and two height
 violations on one reader. All example values are **illustrative**, not verified

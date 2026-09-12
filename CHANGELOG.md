@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.3
+
+- public re-pin: usdaeco-toolchain v0.3.10, usdaeco-core v0.9.5,
+  usdaeco-axis v0.1.5, usdaeco-datacentre v0.4.8. Record the checked
+  revisions alongside public release tags; requirement ranges are unchanged.
+- Bump package and plugin metadata; rebuild the schema and republish the iris
+  example through the documented runner.
+- Keep the crate, seven editable layers, source layers and findings byte-identical;
+  retain five committed images after fresh sampled renders. Result changes are
+  provenance-only. Keep unchanged evaluator and presentation producer stamps.
+- Honour CORE_PLUGIN_DIR in source tests and document the tagged source plugin
+  so stale installed metadata cannot substitute for the checked core version.
+- Verify 48 checks, 0 failed, 0 not run; structure 29/0 and 40 pytest tests.
+  The single offline Nix attempt evaluated five macOS derivations and two apps,
+  then was interrupted during the uncached dependency build; completion is not
+  proven. See docs/validation.md for measured evidence and deviations.
+
 ## 0.1.2
 
 - Publish a stock facility render of the office-link door, failing reader and

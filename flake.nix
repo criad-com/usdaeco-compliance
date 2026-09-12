@@ -1,18 +1,18 @@
 {
   description = "usdAecoCompliance semantic library and example";
   inputs = {
-    toolchain.url = "github:criad-com/usdaeco-toolchain?ref=v0.3.8";
+    toolchain.url = "github:criad-com/usdaeco-toolchain?ref=v0.3.10";
     nixpkgs.follows = "toolchain/nixpkgs";
-    core.url = "github:criad-com/usdaeco-core?ref=v0.9.2";
+    core.url = "github:criad-com/usdaeco-core?ref=v0.9.5";
     core.inputs.toolchain.follows = "toolchain";
     core.inputs.nixpkgs.follows = "nixpkgs";
     core.inputs.datacentre.follows = "datacentre";
-    axis.url = "github:criad-com/usdaeco-axis?ref=v0.1.2";
+    axis.url = "github:criad-com/usdaeco-axis?ref=v0.1.5";
     axis.inputs.core.follows = "core";
     axis.inputs.toolchain.follows = "toolchain";
     axis.inputs.nixpkgs.follows = "nixpkgs";
     axis.inputs.datacentre.follows = "datacentre";
-    datacentre.url = "github:criad-com/usdaeco-datacentre?ref=v0.4.6";
+    datacentre.url = "github:criad-com/usdaeco-datacentre?ref=v0.4.8";
     datacentre.flake = false;
   };
   outputs = { self, nixpkgs, toolchain, core, axis, datacentre }:

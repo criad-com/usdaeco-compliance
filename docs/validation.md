@@ -1,78 +1,83 @@
-# Validation evidence for 0.1.2
+# Validation evidence for 0.1.3
 
-Checks use OpenUSD 26.8 and clean exports of the exact dependency tags:
-core v0.9.2, axis v0.1.2, toolchain v0.3.8 and data centre v0.4.6.
-The latter retains the iris publication generated at v0.4.2. Source layer
-hashes and expected findings are unchanged from the previous release.
-The schema rebuild and fresh `usdGenSchema --validate` pass.
+The checked source tags and peeled forge revisions are recorded in
+[dependencies.json](../dependencies.json): core v0.9.5, axis v0.1.5,
+toolchain v0.3.10 and data centre v0.4.8. All four flake inputs use public
+release tags. Requirement ranges remain unchanged. The toolchain transitively
+pins the public build kit v0.4.0.
+
+The schema rebuild and `usdGenSchema --validate` pass with OpenUSD 26.8.
+Use the committed core source plugin as documented in the
+[README](../README.md#build-and-check). Tests respect `CORE_PLUGIN_DIR` and
+run directly from source without an installed package or setuptools.
 
 | Acceptance | Measured evidence |
 |---|---|
-| Iris result | 11 readers; 10 pass, 1 fail |
-| Clause detail | `/Specifications/accessibility/Clause01` and `/Specifications/employer_security/Clause01` both report 1.65 m on the office-link reader |
-| Full facility | All 12,266 source prims preserved, including identity, transforms, mesh points, topology and extents |
-| Reader presentation | 11 original bodies coloured by verdict; three illustrative height envelopes per reader |
-| Vanilla view | Actual facility door region; failing red reader above the two hard bands; diagram sheet outside the camera view |
-| Diagrams | Original labelled plan and door elevation retained in `renders/` and the separate diagram layer |
-| Standalone result | 12,480 prims; 3,884,764 bytes including own layers and vanilla PNG |
+| Release metadata | Package, source package and plugin all 0.1.3 |
+| Pins | Four matching public tag URLs and four checked revisions |
+| Iris result | 11 readers; 10 pass, 1 fail; two named height clauses at 1.65 m |
+| Full facility | All 12,266 source prims preserved, including identities, transforms, points, topology and extents |
+| Standalone result | 12,480 prims; 3,884,764 bytes across the result directory |
+| Schema and publication | Rebuilt schema; republished through `examples/datacentre/run.py --publish` |
+| Reproduction | One crate and seven editable layers byte-identical to 0.1.2; source layers and expected findings unchanged |
+| Renders | Five fresh 1280 × 800 non-blank PNGs; committed images and hashes retained |
 | Gate | 48 checks, 0 failed, 0 not run |
-| Structure | 29 checks, 0 failed, including S25, S27, S28 and S29 |
-| Tests | 40 passed from source, without an installed package |
-| Validators | Seven compliance rules and all eight core rules imported and loaded |
-| Core validation | 0 errors, 2 inherited classification warnings |
-| Representation marks | 186 symbols: 142 diagram shapes and 44 reader envelope/status meshes |
-| Authority audit | Both hard-source layers muted: 11 pass; all 2,954 element identities and transforms unchanged |
-| Renders | Four 1280 × 800 images; largest 250,836 bytes; vanilla PNG 140,549 bytes |
-| Fresh result / ResultStale | PASS in both working and relocated layouts; each runner within its 180 s budget |
+| Structure | 29 checks, 0 failed, including strengthened S05 and plugin-free S27/S28 |
+| Tests | 40 passed from source |
+| Core validation | Eight rules loaded; 0 errors, 2 inherited classification warnings |
+| Example runner | 73.314 s within its 180 s budget |
 
-Both full gates report **48 checks, 0 failed, 0 not run**, structure **29/0**
-and **40 passed** in pytest. The relocated consumer was a complete Git archive,
-with dependencies independently copied into a different directory hierarchy;
-it began without transient outputs or a source alias.
-[Machine-readable evidence](relocation-verification.json) records every check
-and the source hashes for both layouts.
+[Current receipt](public-repin-verification.json) records the gate, pin matrix,
+byte comparisons and fresh render hashes. The
+[previous two-layout receipt](relocation-verification.json) remains historical
+0.1.2 evidence; its old pins do not describe this release.
 
-The full gate checks every source prim against the pinned stage, original
-reader colours, envelope presence and camera framing. The independent stock
-render proof uses the flattened crate with family plugin paths removed.
-The published vanilla image, facility view and preserved diagrams were
-visually inspected. Hash inventories are in the example manifest.
+The final gate requires all eight core validators and seven compliance rules.
+It verifies the standalone result in a fresh plugin-free process, checks a fresh
+stock Embree render, reproduces findings and layers, preserves all 2,954 element
+identities and transforms when the hard-source layers are muted, and exercises
+the seeded measurement and validation tests.
 
 ## Reproduction
 
-Configure the environment as in [README](../README.md#build-and-check), using
-the exact tags above. `CORE_PLUGIN_DIR` may point to the exported core's
-`usdAeco/` source plugin instead of an installed plugin directory.
+Configure the environment from the README using the exact dependency tags,
+then run:
 
 ```sh
 export PYTHONDONTWRITEBYTECODE=1
+bash build.sh
+env -u PYTHONPATH python examples/datacentre/run.py --publish
 env -u PYTHONPATH PYTHONPATH="$CORE_DIR:$PWD" python check.py
 ```
 
-For a second layout, export the consumer into a deeper directory and copy the
-pinned dependencies into a separate release directory. Start without `out/`
-or `inputs/source`, update the environment paths, and run the same gate.
-The runner recreates `inputs/source`; the committed crate needs no source link.
+The ordinary runner writes to ignored `out/`. Compare the freshly published
+crate and editable layers with the previous release before retaining existing
+PNG bytes and their manifest hashes. Fresh PNG hashes are evidence of the new
+render; S28 deliberately does not compare sampled pixels across runs.
 
 ## Deviations
 
-- S29 adds a rule to the original 28-rule skeleton: the current lint reports
-  **29/0**. The source has **12,266** `TraverseAll` prims, excluding instance
-  prototypes, rather than the anticipated 12,358. The gate compares every source
-  prim against the result; the complete pinned stage remains composed.
-- The vanilla camera uses the actual office-link door region to make the high
-  reader and envelopes legible. The separate `facility` view shows all eleven
-  locations. Its 2.4 m camera clipping plane exposes the ground floor without
-  deleting or altering source geometry. Status crosses and envelope widths are
-  illustrative display symbols; measured reader geometry is unchanged.
-- One `nix flake check --offline --no-write-lock-file` attempt with local direct
-  input overrides failed resolving the nested public `aeco-toolchain` revision
-  with HTTP 404. Nix packaging and platform evaluation are **not proven**;
-  no second attempt was made.
-- All example requirement values remain illustrative. Door distance uses the
-  combined frame/leaf envelope, side uses the exported approach normal, and
-  height uses the containing level datum. Exact leaf distance, optical-centre
-  identification and nonrectangular clear area remain outside v0.1. No IDS XML
-  or IFC constraint exporter is claimed.
+- The single `nix flake check --offline --no-write-lock-file` attempt used
+  four local overrides for toolchain, core, axis and data centre. It evaluated
+  five macOS derivations and both apps, then began a 1,051-dependency build
+  graph. The attempt was interrupted to respect the restricted network scope;
+  exit 1 reports interruption. Nix build completion and Linux evaluation are
+  **not proven**. Direct public GitHub resolution remains for review; no retry
+  or lockfile was committed.
+- The installed core plugin reported 0.9.4 although its checkout was tagged
+  v0.9.5. A preliminary gate was stopped; the final rebuild and gate use the
+  committed 0.9.5 source plugin. No dependency checkout was modified.
+- Fresh renders differ through sampling: mean absolute RGB channel differences
+  against the committed PNGs range from 0.027054 to 0.204554 on the 0–255 scale.
+  The five committed PNGs and their hashes are retained after fresh render
+  validation. The crate, all seven editable layers and source geometry are
+  byte-identical. Result changes are limited to pin provenance and notice hashes.
+- Evaluator and presentation producer stamps retain their existing values
+  because those implementations are unchanged. Datacentre 0.4.7 and 0.4.8
+  explicitly retain the published stage bytes; core 0.9.5 republishes unchanged
+  geometry, and toolchain 0.3.9/0.3.10 strengthen version and tag checks.
+- Requirement values remain illustrative; existing measurement and export
+  limitations are documented in [measurements](measurements.md) and
+  [mapping](mapping.md).
 
-Remaining work is review and merge/release.
+Remaining work is review, public resolution verification and release.

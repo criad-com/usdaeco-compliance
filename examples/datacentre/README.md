@@ -1,6 +1,6 @@
 # Iris reader compliance
 
-Inputs are the pinned data-centre v0.4.6 `iris` stage and three committed
+Inputs are the pinned data-centre v0.4.8 `iris` stage and three committed
 illustrative YAML specifications. `type-map.json` resolves the source catalog
 selector to the catalog class path. The generated USD layers are strongest-first:
 `01-accessibility.usda`, `02-employer-security.usda`, `03-reader-datasheet.usda`.
@@ -40,7 +40,7 @@ measured bodies. The standalone vanilla render uses stock USD and Embree.
 Geometry and identity in the source remain unchanged. `result/layers/` preserves
 `compliance.usda`, `presentation.usda` and `diagrams.usda` separately alongside
 the inputs. `run.py` creates the ignored `inputs/source` alias pointing at
-`AECO_DATACENTRE_ROOT`; no fixed sibling layout is needed. The v0.4.6 release
+`AECO_DATACENTRE_ROOT`; no fixed sibling layout is needed. The v0.4.8 release
 retains the iris publication generated at v0.4.2, with unchanged source hashes.
 
 `out/report.json` has every measured clause, including passing checks. The

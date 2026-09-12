@@ -1,0 +1,477 @@
+{
+  "baseline_version": "0.1.2",
+  "gate": {
+    "checks": 48,
+    "compliance_plugin_version": "0.1.3",
+    "core_plugin_version": "0.9.5",
+    "failed": 0,
+    "not_run": 0,
+    "pytest_passed": 40,
+    "results": [
+      {
+        "detail": "usdAeco 0.9.5, usdAecoCompliance 0.1.3",
+        "name": "plugin requirements",
+        "status": "PASS"
+      },
+      {
+        "detail": "usdAecoValidators imported; no skip path",
+        "name": "core validators import",
+        "status": "PASS"
+      },
+      {
+        "detail": "8 declared validators loaded",
+        "name": "UsdAecoValidators listing",
+        "status": "PASS"
+      },
+      {
+        "detail": "7 declared validators loaded",
+        "name": "UsdAecoComplianceValidators listing",
+        "status": "PASS"
+      },
+      {
+        "detail": "1 applied APIs, 2 concrete types resolve",
+        "name": "schema registry",
+        "status": "PASS"
+      },
+      {
+        "detail": "2 cases passed",
+        "name": "CanApplyAPI restrictions",
+        "status": "PASS"
+      },
+      {
+        "detail": "",
+        "name": "derived result metadata",
+        "status": "PASS"
+      },
+      {
+        "detail": "1 examples, 0 errors (expected 0), 0 warnings",
+        "name": "examples compose and validate",
+        "status": "PASS"
+      },
+      {
+        "detail": "MIT (declared)",
+        "name": "S01",
+        "status": "PASS"
+      },
+      {
+        "detail": "readme",
+        "name": "S02",
+        "status": "PASS"
+      },
+      {
+        "detail": "metadata",
+        "name": "S03",
+        "status": "PASS"
+      },
+      {
+        "detail": "dependency pins",
+        "name": "S04",
+        "status": "PASS"
+      },
+      {
+        "detail": "flake",
+        "name": "S05",
+        "status": "PASS"
+      },
+      {
+        "detail": "layout",
+        "name": "S06",
+        "status": "PASS"
+      },
+      {
+        "detail": "global metadata",
+        "name": "S07",
+        "status": "PASS"
+      },
+      {
+        "detail": "classes",
+        "name": "S08",
+        "status": "PASS"
+      },
+      {
+        "detail": "namespaces",
+        "name": "S09",
+        "status": "PASS"
+      },
+      {
+        "detail": "applicability",
+        "name": "S10",
+        "status": "PASS"
+      },
+      {
+        "detail": "usdGenSchema --validate clean; compiler compatibility only",
+        "name": "S11",
+        "status": "PASS"
+      },
+      {
+        "detail": "resource plugin",
+        "name": "S12",
+        "status": "PASS"
+      },
+      {
+        "detail": "user docs",
+        "name": "S13",
+        "status": "PASS"
+      },
+      {
+        "detail": "validator descriptor",
+        "name": "S14",
+        "status": "PASS"
+      },
+      {
+        "detail": "validator tokens",
+        "name": "S15",
+        "status": "PASS"
+      },
+      {
+        "detail": "7 validators discovered and loaded",
+        "name": "S16",
+        "status": "PASS"
+      },
+      {
+        "detail": "tests",
+        "name": "S17",
+        "status": "PASS"
+      },
+      {
+        "detail": "companion",
+        "name": "S18",
+        "status": "PASS"
+      },
+      {
+        "detail": "profile",
+        "name": "S19",
+        "status": "PASS"
+      },
+      {
+        "detail": "usecase",
+        "name": "S20",
+        "status": "PASS"
+      },
+      {
+        "detail": "example files",
+        "name": "S21",
+        "status": "PASS"
+      },
+      {
+        "detail": "example manifest",
+        "name": "S22",
+        "status": "PASS"
+      },
+      {
+        "detail": "render caps",
+        "name": "S23",
+        "status": "PASS"
+      },
+      {
+        "detail": "1 stage roots compose without family plugins",
+        "name": "S24",
+        "status": "PASS"
+      },
+      {
+        "detail": "terms",
+        "name": "S25",
+        "status": "PASS"
+      },
+      {
+        "detail": "check contract",
+        "name": "S26",
+        "status": "PASS"
+      },
+      {
+        "detail": "12480 prims, 0 composition errors in relocated plugin-free result",
+        "name": "S27",
+        "status": "PASS"
+      },
+      {
+        "detail": "stock Embree render: 1280x800, 140549 bytes, non-uniform",
+        "name": "S28",
+        "status": "PASS"
+      },
+      {
+        "detail": "0 asset paths use example inputs/, archived layers or documented resolver tokens",
+        "name": "S29",
+        "status": "PASS"
+      },
+      {
+        "detail": "findings and committed result match; 12480 plugin-free prims; 4 non-blank renders; source pinned; elapsed 73.314s / budget 180s",
+        "name": "example harness",
+        "status": "PASS"
+      },
+      {
+        "detail": "10 pass, 1 fail; two clauses name 1.65 m",
+        "name": "iris acceptance",
+        "status": "PASS"
+      },
+      {
+        "detail": "0 errors, 2 warnings",
+        "name": "core validators on iris result",
+        "status": "PASS"
+      },
+      {
+        "detail": "186 facility-derived symbols",
+        "name": "publication representation marks",
+        "status": "PASS"
+      },
+      {
+        "detail": "12266 source prims; identities, transforms and mesh geometry unchanged",
+        "name": "full pinned facility preserved",
+        "status": "PASS"
+      },
+      {
+        "detail": "11 original readers coloured; three illustrative bands each",
+        "name": "reader body colours and clause envelopes",
+        "status": "PASS"
+      },
+      {
+        "detail": "failing body and hard height band in view; drawing sheet outside view",
+        "name": "vanilla camera frames facility reader",
+        "status": "PASS"
+      },
+      {
+        "detail": "",
+        "name": "illustrative conversion reproducible",
+        "status": "PASS"
+      },
+      {
+        "detail": "both hard-source layers muted: 11 pass, 0 fail",
+        "name": "authority muting audit",
+        "status": "PASS"
+      },
+      {
+        "detail": "2954 core elements unchanged by muting",
+        "name": "identity and transforms preserved",
+        "status": "PASS"
+      },
+      {
+        "detail": "40 passed in 1.02s",
+        "name": "pytest",
+        "status": "PASS"
+      }
+    ],
+    "structure_checks": 29
+  },
+  "nix": {
+    "attempts": 1,
+    "cause": "Interrupted after evaluation when the uncached dependency build began, to respect restricted network scope. No retry.",
+    "command": "nix flake check --offline --no-write-lock-file",
+    "completion": "not proven",
+    "evaluated_apps": 2,
+    "evaluated_derivations": 5,
+    "evaluated_platform": "aarch64-darwin",
+    "exit_code": 1,
+    "local_override_inputs": [
+      "toolchain",
+      "core",
+      "axis",
+      "datacentre"
+    ],
+    "public_direct_input_resolution": "not proven; local overrides used",
+    "reported_build_graph": 1051
+  },
+  "pins": {
+    "axis": {
+      "library": "usdAecoAxis",
+      "ref": "v0.1.5",
+      "repo": "usdaeco-axis",
+      "revision": "ecff1d98bcc45c22fcceefd453374671900793ae"
+    },
+    "core": {
+      "library": "usdAeco",
+      "ref": "v0.9.5",
+      "repo": "usdaeco-core",
+      "revision": "683adc3280254bc71b396a9c64a359cc708788f4"
+    },
+    "datacentre": {
+      "library": null,
+      "ref": "v0.4.8",
+      "repo": "usdaeco-datacentre",
+      "revision": "9e22b14c4909e50806805e735f93b1b425ac48cb"
+    },
+    "toolchain": {
+      "library": null,
+      "ref": "v0.3.10",
+      "repo": "usdaeco-toolchain",
+      "revision": "59d3da5ff5114089b54efaaae38efdd7fe1b8e73"
+    }
+  },
+  "renders": {
+    "committed_images_retained": 5,
+    "comparisons": [
+      {
+        "committed": {
+          "bytes": 128812,
+          "height": 800,
+          "sha256": "e4ddb6439503033a2a7feece337b4c581aae2bc21d522751b1cfb7a60354f089",
+          "width": 1280
+        },
+        "fresh": {
+          "bytes": 128711,
+          "height": 800,
+          "sha256": "257edf87348e7a15894b984b08eeef1ea42c40fb00a1d5f2dd7a388cfdfec2c5",
+          "width": 1280
+        },
+        "maximum_channel_difference": 58,
+        "mean_absolute_channel_difference": 0.193546,
+        "path": "examples/datacentre/renders/elevation.png"
+      },
+      {
+        "committed": {
+          "bytes": 250836,
+          "height": 800,
+          "sha256": "1ac8bda77d1677935b924f68859577876e2add51b47bc99fcf72e178804df095",
+          "width": 1280
+        },
+        "fresh": {
+          "bytes": 250573,
+          "height": 800,
+          "sha256": "f9342d0c9ccb79b5e672d792a29867ec88192813b7f7d3f7b381d7feec6b02d2",
+          "width": 1280
+        },
+        "maximum_channel_difference": 100,
+        "mean_absolute_channel_difference": 0.204554,
+        "path": "examples/datacentre/renders/facility.png"
+      },
+      {
+        "committed": {
+          "bytes": 140234,
+          "height": 800,
+          "sha256": "91312d82d9320c33751f5f9ef2d766164c225970673d46cb9e805e0133f99b61",
+          "width": 1280
+        },
+        "fresh": {
+          "bytes": 140496,
+          "height": 800,
+          "sha256": "ea66765238fcf005a9feb5f2c383e977afb5a1fee140e14778fc9c6e9640114c",
+          "width": 1280
+        },
+        "maximum_channel_difference": 29,
+        "mean_absolute_channel_difference": 0.027071,
+        "path": "examples/datacentre/renders/overview.png"
+      },
+      {
+        "committed": {
+          "bytes": 126008,
+          "height": 800,
+          "sha256": "332dd7b49d87fc1c303094f848b43aeaf354b69684c0ada0affdcfcd7cf7516f",
+          "width": 1280
+        },
+        "fresh": {
+          "bytes": 125667,
+          "height": 800,
+          "sha256": "b4eaa68a2640ed99db5cadc36107e40fdbc20d5bc1f2a97e0587645d6e3ab009",
+          "width": 1280
+        },
+        "maximum_channel_difference": 57,
+        "mean_absolute_channel_difference": 0.147814,
+        "path": "examples/datacentre/renders/plan.png"
+      },
+      {
+        "committed": {
+          "bytes": 140549,
+          "height": 800,
+          "sha256": "2b3d1b3134cc41a65c6215c9c04d709f3d97dd3fcc68a5befffb4c9451b3c2d8",
+          "width": 1280
+        },
+        "fresh": {
+          "bytes": 140204,
+          "height": 800,
+          "sha256": "e4678f31877463a755b5450e88dbf3011f5e91a68ba22db5e4f4196db98bf8e2",
+          "width": 1280
+        },
+        "maximum_channel_difference": 25,
+        "mean_absolute_channel_difference": 0.027054,
+        "path": "examples/datacentre/result/vanilla.png"
+      }
+    ],
+    "fresh_images_validated": 5,
+    "pixel_scale": "RGB 0-255"
+  },
+  "result": {
+    "byte_identical_files": [
+      {
+        "byte_identical": true,
+        "bytes": 2139157,
+        "path": "examples/datacentre/result/example.usdc",
+        "sha256": "b9eec7582fad856df82b0bd1204f417fcd9138b9a62ecc2bb290d1ad71699bc4"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 1343,
+        "path": "examples/datacentre/result/layers/inputs/01-accessibility.usda",
+        "sha256": "c1a2b0f39f0545ce6850f9ec58323022b48e6d2d37260fa078b5eb2c3ecc0079"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 2356,
+        "path": "examples/datacentre/result/layers/inputs/02-employer-security.usda",
+        "sha256": "e6f25911346e3f04ccc533adedf276e56754d30f2d69530a81244ab748ac7195"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 1326,
+        "path": "examples/datacentre/result/layers/inputs/03-reader-datasheet.usda",
+        "sha256": "3cd0410f98289522743a78751a9c688a8a40f8dd2340a1b9fe5adb62931b6c9a"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 1382,
+        "path": "examples/datacentre/result/layers/inputs/cameras.usda",
+        "sha256": "eb544fcd8add922895453b063217ed9c8e9d5551a5819787338e29762c673b7b"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 17629,
+        "path": "examples/datacentre/result/layers/out/compliance.usda",
+        "sha256": "38673bf5d6edfb154cd1d831c25e1136ee1b482771b8a57a6852064ca84582c9"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 1340224,
+        "path": "examples/datacentre/result/layers/out/diagrams.usda",
+        "sha256": "85987014e2caca96b07f90558b171f92d77f325acdb1577fa54f00ee0137d132"
+      },
+      {
+        "byte_identical": true,
+        "bytes": 240025,
+        "path": "examples/datacentre/result/layers/out/presentation.usda",
+        "sha256": "dc3b0969d23cfa3909413aaf6489e4b36ee340f08eeeb58af2e337e51158fe5a"
+      }
+    ],
+    "bytes": 3884764,
+    "findings_sha256": "d97f13581f610a58528f19c23cad1ed6ddcb45539ff348f5035fbd7a47a567da",
+    "generated_schema_unchanged": true,
+    "prim_count": 12480,
+    "result_changes": "Source release tag in result/README.md; corresponding notice hash and dependency pins in manifest.json.",
+    "schema_source_unchanged": true
+  },
+  "setup": {
+    "core_plugin": "Committed source plugin; installed plugin metadata was stale at 0.9.4. Preliminary gate stopped; final rebuild and full gate use 0.9.5.",
+    "dependency_checkouts_modified": false,
+    "implementation_producer_stamps_changed": false,
+    "requirement_ranges_changed": false
+  },
+  "source": {
+    "layers": [
+      {
+        "bytes": 332637,
+        "path": "dc.geometry.usdc",
+        "sha256": "d73387613389fda72868152abc29f0ccfcae3f092f274e99bc3fb7b88998ec5c"
+      },
+      {
+        "bytes": 1471930,
+        "path": "dc.semantics.usdc",
+        "sha256": "b857167e8555ee82f050c788b5664eab0628f4aa41921766eb0defb8c3699af7"
+      },
+      {
+        "bytes": 517,
+        "path": "dc.usda",
+        "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+      }
+    ],
+    "manifest_sha256": "5e16cacc9fd6b4151262d1c8a910ebbaa28d4d813ab7723465975022efeac0c8",
+    "mode": "pinned",
+    "sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9"
+  },
+  "version": "0.1.3"
+}
