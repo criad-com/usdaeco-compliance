@@ -15,6 +15,7 @@ TOOLCHAIN=Path(os.environ.get('TOOLCHAIN_DIR',HERE.parent/'usdaeco-toolchain')).
 sys.path.insert(0,str(TOOLCHAIN/'tools'))
 sys.path.insert(0,str(HERE/'tools'))
 sys.path.insert(0,str(HERE))
+sys.path.insert(0,str(CORE))
 from usdaeco_check import Report, can_apply, plugin_requires, registry_probe, validate_examples
 from usdaeco_check.structure import check_structure
 from usdaeco_check.example import check_example
@@ -35,7 +36,7 @@ def main():
     try:
         importlib.import_module('usdAecoValidators')
     except ImportError:
-        report.check('core validators import',False,'usdAecoValidators is unavailable; run with the core checkout on PYTHONPATH.')
+        report.check('core validators import',False,'usdAecoValidators is unavailable; CORE_DIR must name the core source checkout.')
         return report.finish()
     report.check('core validators import',True,'usdAecoValidators imported; no skip path')
     registry=UsdValidation.ValidationRegistry()
@@ -54,6 +55,11 @@ def main():
     print('== stage: pinned example and result reproduction',flush=True)
     example=HERE/'examples/datacentre'
     if not report.add(check_example(example)):return report.finish()
+    from examples.datacentre.run import verify_results
+    verified=verify_results()
+    report.check('committed results verify without recomputation',
+                 verified['checked']==11 and verified['stale']==0,
+                 f"{verified['checked']} checked, {verified['stale']} stale against the pinned source")
     from usdaeco_compliance.evaluator import evaluate, fingerprint
     from usdaeco_compliance.convert import convert_sources
     stage=Usd.Stage.Open(str(example/'out/example.usda'))

@@ -64,30 +64,48 @@ def compare(measured, data):
 
 
 def fingerprint(stage):
-    """Hash composed inputs, not file mtimes; relocation and results are inert.
+    """Hash authored input opinions after composition, excluding fallbacks.
 
     Includes inherited properties, mesh points/topology, transforms, identities,
-    classification, requirement benchmarks, property values and spatial datums.
-    Ignores presentation-only colour, visibility, cameras and marked figures.
+    classification, clauses, spatial datums and authored API applications.
+    Values equal to fallbacks, value blocks and empty target lists are opinions.
+    Results and presentation are inert; layer identifiers/versions are not inputs.
     """
-    rows = [('metrics', UsdGeom.GetStageMetersPerUnit(stage), UsdGeom.GetStageUpAxis(stage))]
+    rows = [('metrics', [(key, str(stage.GetMetadata(key)))
+                         for key in ('metersPerUnit', 'upAxis') if stage.HasAuthoredMetadata(key)])]
     for prim in stage.TraverseAll():
         if prim.GetCustomDataByKey('aecoCompliancePresentation') or prim.GetPath().HasPrefix('/Renders'):
             continue
-        relevant = (prim.GetTypeName().startswith('Aeco') or has_api(prim, 'AecoElementAPI')
-                    or has_api(prim, 'AecoDerivedGeometryAPI') or prim.IsA(UsdGeom.Xformable))
+        # GetMetadata also composes a typed schema's built-in API fallback.
+        # GetAllAuthoredMetadata excludes that schema-provided list opinion.
+        authored = prim.GetAllAuthoredMetadata().get('apiSchemas')
+        apis = [name for name in authored.GetAppliedItems() if name != 'AecoComplianceAPI'] if authored else []
+        relevant = (prim.GetTypeName().startswith('Aeco') or 'AecoElementAPI' in apis
+                    or 'AecoDerivedGeometryAPI' in apis or prim.IsA(UsdGeom.Xformable))
         if not relevant:
             continue
         props = []
-        for prop in prim.GetProperties():
+        for prop in sorted(prim.GetAuthoredProperties(), key=lambda p: p.GetName()):
             name = prop.GetName()
             if name.startswith(('aeco:compliance:', 'primvars:')) or name in ('visibility', 'purpose', 'doubleSided'):
                 continue
             if isinstance(prop, Usd.Attribute):
-                props.append((name, str(prop.Get()), [(t, str(prop.Get(t))) for t in prop.GetTimeSamples()]))
-            else:
+                values = []
+                for time in [Usd.TimeCode.Default(), *prop.GetTimeSamples()]:
+                    info = prop.GetResolveInfo(time)
+                    # A sampled attribute may still resolve to a schema fallback
+                    # at Default. A block can also reveal a fallback: hash the
+                    # block itself, never that runtime-provided value.
+                    if info.ValueIsBlocked():
+                        values.append((str(time), 'blocked'))
+                    elif info.HasAuthoredValue():
+                        values.append((str(time), 'value', str(prop.Get(time))))
+                if values:
+                    props.append((name, values))
+            elif prop.HasAuthoredTargets():
                 props.append((name, [str(p) for p in prop.GetTargets()]))
-        rows.append((str(prim.GetPath()), prim.GetTypeName(), str(prim.GetInherits().GetAllDirectInherits()), props))
+        rows.append((str(prim.GetPath()), prim.GetTypeName(), apis,
+                     str(prim.GetInherits().GetAllDirectInherits()), props))
     return hashlib.sha256(json.dumps(rows, ensure_ascii=True, separators=(',', ':')).encode()).hexdigest()
 
 
@@ -155,7 +173,7 @@ def write_results(stage, output):
     digest = fingerprint(stage)
     layer = existing or Sdf.Layer.CreateNew(str(output))
     layer.Clear()
-    layer.customLayerData = {'aecoComplianceRole': 'result', 'inputFingerprint': digest, 'evaluatorVersion': '0.1.0'}
+    layer.customLayerData = {'aecoComplianceRole': 'result', 'inputFingerprint': digest, 'evaluatorVersion': '0.2.0'}
     result_stage = Usd.Stage.Open(layer)
     add_fallbacks(result_stage)
     for row in result['results']:

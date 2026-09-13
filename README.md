@@ -55,16 +55,21 @@ on `PATH`. These relative paths assume sibling checkouts:
 export TOOLCHAIN_DIR=../usdaeco-toolchain
 export CORE_DIR=../usdaeco-core
 export CORE_PLUGIN_DIR="$CORE_DIR/usdAeco"
+export AXIS_PLUGIN_DIR=../usdaeco-axis/usdAecoAxis
 export AECO_DATACENTRE_ROOT=../usdaeco-datacentre
 export PXR_PLUGINPATH_NAME="$CORE_PLUGIN_DIR:$PWD/usdAecoCompliance:$PWD/usdAecoComplianceValidators"
 export PYTHON=python
 bash build.sh
-env -u PYTHONPATH PYTHONPATH="$CORE_DIR:$PWD" python check.py
+env -u PYTHONPATH python check.py
 env -u PYTHONPATH python -m pytest -q
 ```
 
 `check.py` prints the family `N checks, M failed` summary. Missing core validators
 are a setup failure, never a skipped check. Tests insert `tools/` into `sys.path`.
+The gate imports core validators from `CORE_DIR` without setting `PYTHONPATH`.
+The axis source plugin is used only by the fresh-process plugin-set tests;
+it is already a declared test pin. Set `AECO_DATACENTRE_ROOT` to the exact
+v0.4.8 release for the full tests and committed-result verification.
 The committed source plugin above carries the checked core version; an installed
 plugin may instead be selected with `CORE_PLUGIN_DIR` after verifying its version.
 To call the companion directly from source:
@@ -103,8 +108,11 @@ this repository's manifest and results.
 
 ## Status
 
-Version 0.1.3: **48 checks, 0 failed; structure 29/0; pytest 40 passed**.
-Public release pins, unchanged result layers and fresh stock renders are verified; see
+Version 0.2.0 fingerprints authored input opinions independently of registered
+schema plugins. A value explicitly equal to a fallback still counts as data.
+Verified: **49 checks, 0 failed; structure 29/0; pytest 51 passed, 0 skipped**.
+Run `env -u PYTHONPATH python examples/datacentre/run.py --verify-results` to
+verify the committed result layers without recomputation. See
 [validation evidence](docs/validation.md).
 The iris example demonstrates eleven readers and two height
 violations on one reader. All example values are **illustrative**, not verified

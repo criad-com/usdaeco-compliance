@@ -48,6 +48,29 @@ ordinary runner writes only `out/`; `--publish` refreshes committed results and
 images after comparing expected findings. Re-run the README's converter command
 to regenerate the input layers; it never writes into the data-centre checkout.
 
+Version 0.2.0 replaces the runtime-dependent fingerprint. For an older committed
+result, run the one-time migration in the configured environment:
+
+```sh
+env -u PYTHONPATH python examples/datacentre/run.py --migrate-fingerprint --publish
+```
+
+Run from the repository root. Migration evaluates the same pinned inputs and
+compares every result opinion with the archive before publishing; only the
+fingerprint and evaluator-version metadata may differ. A changed verdict or
+report aborts migration. The committed results in this release are migrated.
+To verify them without evaluating clauses, writing outputs or rendering:
+
+```sh
+env -u PYTHONPATH python examples/datacentre/run.py --verify-results
+```
+
+This reads the archived layers over the v0.4.8 iris source, checks the published
+source hashes and requires **11 checked, 0 stale**. The same verification runs
+with no family plugins, compliance alone, and core + compliance + axis in the
+full test suite. Use the archived layers for freshness checks: flattening a
+stage can bake schema defaults and loses per-layer result provenance.
+
 All limits are illustrative. The door-edge check measures the combined frame
 and leaf envelope; the precise leaf edge is not proven. See
 [measurement limits](../../docs/measurements.md) and [validation](../../docs/validation.md).

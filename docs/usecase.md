@@ -88,6 +88,39 @@ fingerprint in result-layer metadata, not a timestamp comparison. Missing data
 never earns a pass. A previously checked element with no current applicable
 clauses becomes `notApplicable`. [Measurement limits](measurements.md) are explicit.
 
+The fingerprint covers authored input opinions after USD composition: prim
+paths and type names, authored `apiSchemas`, inherited catalog bindings and
+values, identities, classifications, clause applicability and benchmarks,
+property values, marked mesh points/topology, transforms and spatial datums.
+Authored stage units and up-axis metadata are included. This is a conservative
+input census: it can invalidate results when an unrelated authored property on
+an included prim changes. Weaker opinions hidden by composition do not change
+the composed value.
+
+Only authored attribute defaults and time samples are hashed, using resolve
+information to exclude schema fallbacks even at Default time on sampled
+attributes. An explicit value equal to its schema fallback still counts;
+clearing it changes the fingerprint. Value blocks and explicitly empty
+relationship target lists also count. API names come from composed authored
+`apiSchemas`, excluding the derived `AecoComplianceAPI`, rather than the
+runtime's expanded schema list. Schema-only properties and built-in APIs
+contribute nothing. Registering additional plugins therefore cannot invalidate
+unchanged authored inputs.
+
+Compliance result properties and their API, presentation colour/primvars,
+visibility, purpose, double-sided display, `/Renders` and marked compliance
+figures remain excluded. Layer identifiers, layer versions and file timestamps
+were never fingerprint inputs and remain excluded; relocation does not require
+recomputation. Source release hashes are checked separately by the example.
+
+Version 0.2.0 changes the hash by construction. The example's one-time
+`run.py --migrate-fingerprint --publish` migration compares every old and new
+result opinion and refuses publication if anything except the fingerprint and
+evaluator-version metadata differs. Subsequent `run.py --verify-results` runs
+verify the archived result layers against the pinned data without evaluating,
+writing or publishing. The flattened crate is an inspection snapshot; use the
+archived source/result composition for freshness checks.
+
 ## 6 The example on the demo data centre
 
 The pinned iris stage has eleven readers. Ten body centres are 1.20 m above
@@ -139,6 +172,6 @@ editable source/result composition, whose layer provenance is preserved separate
 
 ## 9 Status
 
-Version 0.1.3: codeless schema, YAML converter, five measured tokens, CLI,
+Version 0.2.0: authored-opinion fingerprints, codeless schema, YAML converter, five measured tokens, CLI,
 seven validators, seeded defects, an iris example, two facility views and two preserved diagram figures.
 Acceptance evidence and deviations are maintained in [validation.md](validation.md).

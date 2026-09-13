@@ -1,0 +1,159 @@
+{
+  "committed_images_retained": true,
+  "example": {
+    "budget_seconds": 180,
+    "checked": 11,
+    "core_errors": 0,
+    "core_warnings": 2,
+    "fail": 1,
+    "failed_clauses": 2,
+    "failed_height_metres": 1.65,
+    "muting_preserved_elements": 2954,
+    "pass": 10,
+    "pin": {
+      "ref": "v0.4.8",
+      "variant": "iris"
+    },
+    "result_bytes": 3884764,
+    "result_prims": 12480,
+    "seconds": 56.006,
+    "source_mode": "pinned",
+    "source_prims": 12266
+  },
+  "fresh_publication_renders": [
+    {
+      "bytes": 129224,
+      "height": 800,
+      "path": "renders/elevation.png",
+      "sha256": "24652119dcd6e0b0f46aea3c27b7fe54ea1b358fa6233e2215465f03d2e56175",
+      "width": 1280
+    },
+    {
+      "bytes": 251306,
+      "height": 800,
+      "path": "renders/facility.png",
+      "sha256": "bf6bd49bd05d90c774d78173b524ab58aff299e2a1d48b595c7d656f081d9e75",
+      "width": 1280
+    },
+    {
+      "bytes": 140557,
+      "height": 800,
+      "path": "renders/overview.png",
+      "sha256": "98b7025923f3a019989b3201cbb0d1d446f13dbf9934a9baa3e1e2ceb494ce34",
+      "width": 1280
+    },
+    {
+      "bytes": 125964,
+      "height": 800,
+      "path": "renders/plan.png",
+      "sha256": "77de26b39aa7514495a84639b625859a622b3d69ac27a5aff5b0a4b1628c24b9",
+      "width": 1280
+    },
+    {
+      "bytes": 140278,
+      "height": 800,
+      "path": "result/vanilla.png",
+      "sha256": "d0156aaf1ac29beb9cd3d294cb4438381497a5369a8eb8ec40b824ac1201fb40",
+      "width": 1280
+    }
+  ],
+  "gate": {
+    "checks": 49,
+    "failed": 0,
+    "not_run": 0
+  },
+  "larger_plugin_set": {
+    "checked": 11,
+    "fail": 1,
+    "fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+    "pass": 10,
+    "plugins": [
+      "usdAeco",
+      "usdAecoCompliance",
+      "usdAecoAxis",
+      "usdAecoBuildUp",
+      "usdAecoWall",
+      "usdAecoPipe",
+      "usdAecoSync",
+      "usdAecoCctv",
+      "usdAecoClash",
+      "usdAecoPlan",
+      "usdAecoRepeat"
+    ],
+    "recomputed": false,
+    "stale": 0
+  },
+  "migration": {
+    "changed_result_files": [
+      "result/layers/out/compliance.usda"
+    ],
+    "evaluator_version": "0.2.0",
+    "expected_findings_unchanged": true,
+    "fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+    "pins_unchanged": true,
+    "previous_evaluator_version": "0.1.0",
+    "previous_fingerprint": "b5bea2f003cb74b8790127f7112ada2cd18cb263af0c71f457a27e13aefa6dcd",
+    "result_opinions_unchanged": true,
+    "source_hashes_unchanged": true,
+    "unchanged_result_files": [
+      "result/README.md",
+      "result/example.usdc",
+      "result/layers/inputs/01-accessibility.usda",
+      "result/layers/inputs/02-employer-security.usda",
+      "result/layers/inputs/03-reader-datasheet.usda",
+      "result/layers/inputs/cameras.usda",
+      "result/layers/out/diagrams.usda",
+      "result/layers/out/presentation.usda",
+      "result/vanilla.png"
+    ]
+  },
+  "nix": {
+    "attempts": 1,
+    "exit_code": 1,
+    "local_overrides": 5,
+    "lockfile_committed": false,
+    "offline": true,
+    "reason": "A symlinked parent of the temporary source export was rejected during input resolution; evaluation and build did not start.",
+    "status": "not proven"
+  },
+  "openusd": "26.8",
+  "plugin_matrix": [
+    {
+      "checked": 11,
+      "fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+      "plugins": [],
+      "recomputed": false,
+      "stale": 0
+    },
+    {
+      "checked": 11,
+      "fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+      "plugins": [
+        "usdAecoCompliance"
+      ],
+      "recomputed": false,
+      "stale": 0
+    },
+    {
+      "checked": 11,
+      "fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+      "plugins": [
+        "usdAeco",
+        "usdAecoCompliance",
+        "usdAecoAxis"
+      ],
+      "recomputed": false,
+      "stale": 0
+    }
+  ],
+  "pytest": {
+    "passed": 51,
+    "seconds": 15.5,
+    "skipped": 0
+  },
+  "structure": {
+    "checks": 29,
+    "failed": 0
+  },
+  "version": "0.2.0"
+}

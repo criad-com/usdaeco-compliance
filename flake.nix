@@ -29,6 +29,7 @@
             export TOOLCHAIN_DIR=${toolchain}
             export CORE_DIR=${core}
             export CORE_PLUGIN_DIR=${corePlugin}/plugins/usdAeco/resources
+            export AXIS_PLUGIN_DIR=${axis}/usdAecoAxis
             export AECO_DATACENTRE_ROOT=${datacentre}
             export PXR_PLUGINPATH_NAME=${plugins}
           '';
@@ -62,7 +63,7 @@
           cp -R ${self} source
           chmod -R u+w source
           cd source
-          env -u PYTHONPATH PYTHONPATH=${core}:$PWD python check.py
+          env -u PYTHONPATH python check.py
           mkdir -p "$out"
         '');
         structure = p.pkgs.runCommand "usdAecoCompliance-structure" {

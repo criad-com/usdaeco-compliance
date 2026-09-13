@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "usdaeco-compliance"
-version = "0.1.3"
+version = "0.2.0"
 requires-python = ">=3.11"
 dependencies = ["PyYAML>=6,<7", "usdaeco-toolchain>=0.3.2,<0.4"]
 

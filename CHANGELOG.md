@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.0
+
+- Fingerprint authored input opinions after USD composition, including authored
+  API applications, defaults, samples, blocks and relationship targets. Exclude
+  schema fallbacks and expanded built-in APIs; keep result and presentation
+  exclusions. Layer identifiers and versions remain outside the digest.
+- Preserve the property namespaces and result shape. Migrate the example's
+  fingerprint and evaluator-version metadata while requiring every committed
+  result opinion to remain unchanged; add verification without recomputation.
+- Test fresh-process equivalence with no family plugins, compliance alone,
+  and core + compliance + axis, plus explicit fallback values, opinion removal,
+  blocks, time samples, inheritance and stale reader-height results.
+- Keep the exact data-centre v0.4.8 pin and source hashes. Import core validators
+  from the configured source checkout without requiring PYTHONPATH.
+- Verify 49 checks, 0 failed; structure 29/0; 51 pytest tests. Committed results
+  verify with 0, 1, 3 and 11 family schema plugins without recomputation.
+  Keep the standalone crate, six other editable layers and five images
+  byte-identical. The single Nix attempt stopped during input resolution;
+  packaging remains not proven. See docs/validation.md for the receipt.
+
 ## 0.1.3
 
 - public re-pin: usdaeco-toolchain v0.3.10, usdaeco-core v0.9.5,

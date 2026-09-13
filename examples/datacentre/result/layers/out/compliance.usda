@@ -2,8 +2,8 @@
 (
     customLayerData = {
         string aecoComplianceRole = "result"
-        string evaluatorVersion = "0.1.0"
-        string inputFingerprint = "b5bea2f003cb74b8790127f7112ada2cd18cb263af0c71f457a27e13aefa6dcd"
+        string evaluatorVersion = "0.2.0"
+        string inputFingerprint = "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f"
     }
     fallbackPrimTypes = {
         token[] AecoRequirement = ["Scope"]
