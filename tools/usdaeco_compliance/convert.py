@@ -5,6 +5,7 @@ import yaml
 from pxr import Sdf, Usd, UsdGeom
 from .model import attr, add_fallbacks, value, elements, classified
 from .evaluator import check_clause
+from .study import study_root as resolve_study_root, define_scopes, record_root
 
 MEASURES = {'MountingHeight': 'measured:centreHeightAboveFloor', 'BottomHeight': 'measured:bottomHeightAboveFloor',
             'DoorEdgeOffset': 'measured:distanceToDoorLeafEdge', 'Side': 'measured:sideOfDoor',
@@ -13,7 +14,8 @@ SOURCES = [('accessibility', '01-accessibility.usda'), ('employer-security', '02
            ('reader-datasheet', '03-reader-datasheet.usda')]
 
 
-def convert_document(data, output, *, name, type_paths=()):
+def convert_document(data, output, *, name, type_paths=(), study_root=None):
+    location = resolve_study_root(root=study_root)
     if data.get('illustrative') is not True:
         raise ValueError('This converter accepts illustrative data only; verified regulatory ingestion is outside v0.1.')
     if data['kind'] not in ('regulation', 'specification', 'datasheet', 'standard'):
@@ -36,9 +38,11 @@ def convert_document(data, output, *, name, type_paths=()):
     stage.SetMetadata('upAxis', 'Z')
     add_fallbacks(stage)
     stage.GetRootLayer().customLayerData = {'illustrative': True, 'source': name+'.yaml'}
-    root = stage.DefinePrim('/Specifications', 'Scope')
-    stage.SetDefaultPrim(root)
-    spec = stage.DefinePrim('/Specifications/'+name.replace('-', '_'), 'AecoSpecification')
+    record_root(stage.GetRootLayer(), location)
+    scope = location.AppendChild('Specifications')
+    define_scopes(stage, scope)
+    stage.SetDefaultPrim(stage.GetPrimAtPath(scope.GetPrefixes()[0]))
+    spec = stage.DefinePrim(scope.AppendChild(name.replace('-', '_')), 'AecoSpecification')
     attr(spec, 'aeco:spec:title', Sdf.ValueTypeNames.String, data['title'])
     attr(spec, 'aeco:spec:source', Sdf.ValueTypeNames.String, data['source'])
     attr(spec, 'aeco:spec:kind', Sdf.ValueTypeNames.Token, data['kind'])
@@ -57,7 +61,8 @@ def convert_document(data, output, *, name, type_paths=()):
     return output
 
 
-def convert_sources(source_dir, output_dir, stage, type_map):
+def convert_sources(source_dir, output_dir, stage, type_map, *, study_root=None):
+    location = resolve_study_root(stage, study_root)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     for stem, filename in SOURCES:
@@ -71,4 +76,4 @@ def convert_sources(source_dir, output_dir, stage, type_map):
             if not target or not target.IsAbstract():
                 raise ValueError('Type selector must map to a catalog class prim.')
             paths.append(path)
-        convert_document(data, output_dir/filename, name=stem, type_paths=paths)
+        convert_document(data, output_dir/filename, name=stem, type_paths=paths, study_root=location)

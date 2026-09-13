@@ -71,6 +71,32 @@ with no family plugins, compliance alone, and core + compliance + axis in the
 full test suite. Use the archived layers for freshness checks: flattening a
 stage can bake schema defaults and loses per-layer result provenance.
 
+For the suite layout, use the same environment with:
+
+```sh
+export AECO_STUDY_ROOT=/Studies/compliance
+env -u PYTHONPATH python examples/datacentre/run.py --output-dir out/study
+```
+
+This writes a composable study under `out/study/`: specifications are under
+`/Studies/compliance/Specifications`, drawing sheets under
+`/Studies/compliance/ComplianceFigures`, and cameras under
+`/Renders/compliance`. Result opinions and reader envelopes remain on the
+building. Input USD layers are copied before their namespaces change; their
+authority order and project-catalog targets are preserved. The committed inputs,
+expected findings, crate and images are unchanged. The configured runner writes
+USD and JSON for suite composition; it does not render or publish the legacy
+example. `--study-root` overrides the environment setting.
+
+The saved layers can be checked without setting `AECO_STUDY_ROOT`. Tools follow
+authored specification paths and result targets. Moving those prim paths makes
+old fingerprints stale, so the hook evaluates after relocation. This preserves
+the v0.2.0 authored-opinion hash and its existing default-layout digest.
+Set `AECO_DATACENTRE_STAGE` to a different delivery's `dist/full/dc.usda` for
+an explicit compatibility probe. The integration tests additionally use
+`AECO_DATACENTRE_SUITE_ROOT` for the exact v0.5.2 suite fixture; the historical
+publication remains pinned to v0.4.8.
+
 All limits are illustrative. The door-edge check measures the combined frame
 and leaf envelope; the precise leaf edge is not proven. See
 [measurement limits](../../docs/measurements.md) and [validation](../../docs/validation.md).

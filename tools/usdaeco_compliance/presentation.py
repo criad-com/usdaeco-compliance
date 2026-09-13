@@ -8,6 +8,7 @@ from PIL import ImageFont
 from pxr import Sdf, Usd, UsdGeom, Gf
 from .measure import Measurements
 from .model import value, elements, classified, requirements, specifications, nearest, attr
+from .study import study_root, define_scopes, record_root, selected_specification
 
 INK=(.065,.10,.16)
 GREY=(.72,.77,.81)
@@ -77,7 +78,13 @@ def draw(stage, result, output):
     facility=nearest(reader,{'AecoFacility'})
     if not facility:raise ValueError('Publication figures need the containing facility referent.')
     figure_root=str(facility.GetPath().AppendChild('ComplianceFigures'))
-    figures.OverridePrim(facility.GetPath())
+    location=study_root(stage)
+    if location == Sdf.Path.absoluteRootPath:
+        figures.OverridePrim(facility.GetPath())
+    else:
+        define_scopes(figures,location)
+        figure_root=str(location.AppendChild('ComplianceFigures'))
+        record_root(layer,location)
     transform=UsdGeom.Xform.Define(figures,figure_root)
     transform.SetResetXformStack(True)
     transform.AddTranslateOp().Set((0,0,20))
@@ -104,7 +111,7 @@ def draw(stage, result, output):
     elevation.text(.8,.62,'Floor datum / 0.00 m',.19)
     columns=[('accessibility',BLUE,7.1),('employer_security',GREEN,8.5),('reader_datasheet',AMBER,9.9)]
     for name,colour,x in columns:
-        spec=stage.GetPrimAtPath('/Specifications/'+name)
+        spec=selected_specification(stage,bad,name)
         req=next(r for r in requirements(spec) if value(r,'aeco:req:measure')=='measured:centreHeightAboveFloor')
         a,b=value(req,'aeco:req:values')
         elevation.rect(x,oy+a*scale,.60,(b-a)*scale,colour,.02)
@@ -212,7 +219,7 @@ def present_facility(stage, result, output):
         for name, colour_band, radius in [('accessibility', BLUE, .50),
                                           ('employer_security', GREEN, .38),
                                           ('reader_datasheet', AMBER, .26)]:
-            spec = stage.GetPrimAtPath('/Specifications/' + name)
+            spec = selected_specification(stage, row, name)
             req = next(r for r in requirements(spec)
                        if value(r, 'aeco:req:measure') == 'measured:centreHeightAboveFloor')
             low, high = value(req, 'aeco:req:values')

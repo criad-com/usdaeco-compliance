@@ -110,8 +110,13 @@ unchanged authored inputs.
 Compliance result properties and their API, presentation colour/primvars,
 visibility, purpose, double-sided display, `/Renders` and marked compliance
 figures remain excluded. Layer identifiers, layer versions and file timestamps
-were never fingerprint inputs and remain excluded; relocation does not require
-recomputation. Source release hashes are checked separately by the example.
+were never fingerprint inputs and remain excluded; moving files without changing
+prim paths does not require recomputation. Source release hashes are checked
+separately by the example. Version 0.2.1 retains this exact v0.2.0 algorithm:
+changing the study root moves specification and clause prim paths, so it changes
+the digest and requires a fresh evaluation. The hook evaluates after relocating
+the inputs; the CLI and ComplianceStale validator follow the authored paths.
+An unchanged stage keeps its digest regardless of `AECO_STUDY_ROOT`.
 
 Version 0.2.0 changes the hash by construction. The example's one-time
 `run.py --migrate-fingerprint --publish` migration compares every old and new

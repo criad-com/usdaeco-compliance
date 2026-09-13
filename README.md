@@ -81,6 +81,25 @@ env -u PYTHONPATH python tools/run_compliance.py check examples/datacentre/out/e
 
 `aeco-compliance check` is the packaging entry point for the same command. Exit
 0 means no hard finding, 1 means a hard finding, and 2 means invalid invocation.
+`AECO_STUDY_ROOT` defaults to `/`, preserving the committed example. The suite
+sets `/Studies/compliance`: specification inputs and drawing sheets live below
+that Scope, and cameras live below `/Renders/compliance`. Compliance opinions,
+reader colours and reader height envelopes stay on the building. The hook copies
+the example's input layers into `out/inputs/` before relocating their prims;
+catalog selectors continue to target the project's own `_TypeCatalog`.
+
+For a configured study, run `examples/datacentre/run.py --study-root
+/Studies/compliance --output-dir out/study` in the same environment. This writes
+a composable `example.usda`, input/result/presentation layers and JSON reports;
+the default runner retains the shared publication and rendering harness.
+Use `AECO_DATACENTRE_STAGE` for an explicit compatibility source override.
+The converter also accepts `--study-root`; otherwise it uses the existing
+specification location, then the setting. Readers and validators discover
+specifications from the stage, and presentation follows result targets.
+Non-default layers record `aecoComplianceStudyRoot` in `customLayerData`.
+Moving specification prims requires rechecking because their paths remain
+inputs to the unchanged v0.2.0 fingerprint algorithm.
+
 To build under Nix, run `nix flake check`. Public GitHub inputs match
 `dependencies.json`. Private registry or `--override-input` mappings belong
 outside this checkout; see the toolchain's `docs/repo-conventions.md`. Dependency
@@ -108,9 +127,11 @@ this repository's manifest and results.
 
 ## Status
 
-Version 0.2.0 fingerprints authored input opinions independently of registered
-schema plugins. A value explicitly equal to a fallback still counts as data.
-Verified: **49 checks, 0 failed; structure 29/0; pytest 51 passed, 0 skipped**.
+Version 0.2.1 adds configurable study roots while retaining the v0.2.0
+authored-opinion fingerprint. A value explicitly equal to a fallback still
+counts as data. See the [study-root validation evidence](docs/validation.md)
+for the default publication and the v0.5.2 full delivery checks.
+Verified: **49 checks, 0 failed; structure 29/0; pytest 64 passed, 0 skipped**.
 Run `env -u PYTHONPATH python examples/datacentre/run.py --verify-results` to
 verify the committed result layers without recomputation. See
 [validation evidence](docs/validation.md).

@@ -6,6 +6,7 @@ from pathlib import Path
 from pxr import Sdf, Usd, UsdGeom
 from .measure import Measurements, Unmeasurable, MissingBinding, MEASURE_UNITS
 from .model import value, elements, specifications, requirements, applies, attr, add_fallbacks, has_api
+from .study import study_root, record_root
 
 OPERATORS = {'eq', 'ne', 'lt', 'le', 'gt', 'ge', 'between', 'in'}
 FINDING_KINDS = ('missingDevice', 'misplacedDevice', 'unapprovedProduct', 'missingBinding')
@@ -70,6 +71,8 @@ def fingerprint(stage):
     classification, clauses, spatial datums and authored API applications.
     Values equal to fallbacks, value blocks and empty target lists are opinions.
     Results and presentation are inert; layer identifiers/versions are not inputs.
+    Prim paths are inputs: relocating specifications requires a fresh evaluation.
+    The v0.2.0 algorithm is retained to preserve existing publication digests.
     """
     rows = [('metrics', [(key, str(stage.GetMetadata(key)))
                          for key in ('metersPerUnit', 'upAxis') if stage.HasAuthoredMetadata(key)])]
@@ -171,9 +174,11 @@ def write_results(stage, output):
     # A previous result is excluded from authority and replaced as a whole.
     result = evaluate(stage)
     digest = fingerprint(stage)
+    location = study_root(stage)
     layer = existing or Sdf.Layer.CreateNew(str(output))
     layer.Clear()
     layer.customLayerData = {'aecoComplianceRole': 'result', 'inputFingerprint': digest, 'evaluatorVersion': '0.2.0'}
+    record_root(layer, location)
     result_stage = Usd.Stage.Open(layer)
     add_fallbacks(result_stage)
     for row in result['results']:

@@ -1,0 +1,95 @@
+{
+  "fingerprint_algorithm": "0.2.0 authored opinions",
+  "fingerprint_root_independent": false,
+  "nix": {
+    "apps_evaluated": 2,
+    "attempts": 1,
+    "derivations_evaluated": 5,
+    "status": "interrupted during uncached dependency builds; packaging not proven"
+  },
+  "relocation_requires_recheck": true,
+  "studies": [
+    {
+      "cameras": [
+        "/Renders/compliance/elevation",
+        "/Renders/compliance/plan",
+        "/Renders/compliance/facility",
+        "/Renders/compliance/overview"
+      ],
+      "catalog_path": "/demo_datacentre_01/_TypeCatalog",
+      "catalog_prims": 65,
+      "findings": 2,
+      "fingerprint": "a6f6762ed3a220747171e322a6ad7c8657ae220a3672c0e2cdb6f1f7913e3e33",
+      "release": "v0.4.8",
+      "root_catalog_present": false,
+      "root_prims": [
+        "/demo_datacentre_01",
+        "/Renders",
+        "/Studies"
+      ],
+      "source_stage_sha256": "628b1383ecb57956fd3c39967c68914afa97c3a3d24c7359c05c44b9cdb7abf9",
+      "stale": 0,
+      "studies_type": "Scope",
+      "study_root": "/Studies/compliance",
+      "variant": "iris",
+      "verdicts": {
+        "fail": 1,
+        "pass": 10
+      }
+    },
+    {
+      "cameras": [
+        "/Renders/compliance/elevation",
+        "/Renders/compliance/plan",
+        "/Renders/compliance/facility",
+        "/Renders/compliance/overview"
+      ],
+      "catalog_path": "/demo_datacentre_01/_TypeCatalog",
+      "catalog_prims": 65,
+      "findings": 2,
+      "fingerprint": "fc113f5b92598c8b1c5672bd3352b3d4bf8d0c76bb1d4cef1f499011eb8d25fc",
+      "release": "v0.5.2",
+      "root_catalog_present": false,
+      "root_prims": [
+        "/demo_datacentre_01",
+        "/Renders",
+        "/Studies"
+      ],
+      "source_stage_sha256": "85df064b63d065fd743286fee3d6386662f61aca3cb4e154bca422d8cce52b2b",
+      "stale": 0,
+      "studies_type": "Scope",
+      "study_root": "/Studies/compliance",
+      "variant": "full",
+      "verdicts": {
+        "fail": 1,
+        "pass": 10
+      }
+    }
+  ],
+  "unchanged_committed_artifacts": 24,
+  "unchanged_default_fingerprint": "278615eff4020017a5846ac7fff850f4105931dfb65f3e87faf3564d8304b31f",
+  "validation": {
+    "committed_verification": {
+      "checked": 11,
+      "stale": 0
+    },
+    "example_runner_seconds": 58.759,
+    "gate": {
+      "checks": 49,
+      "failed": 0,
+      "not_run": 0
+    },
+    "pytest": {
+      "passed": 64,
+      "seconds": 65.26,
+      "skipped": 0
+    },
+    "schema_generation": "pass",
+    "schema_validation": "pass",
+    "structure": {
+      "checks": 29,
+      "failed": 0
+    }
+  },
+  "version": "0.2.1"
+}

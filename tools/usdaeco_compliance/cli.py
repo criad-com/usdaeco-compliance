@@ -20,12 +20,17 @@ def main(argv=None):
     convert.add_argument('--stage', type=Path, required=True)
     convert.add_argument('--type-map', type=Path, required=True)
     convert.add_argument('--output-dir', type=Path, required=True)
+    convert.add_argument('--study-root', help='Study prim path; otherwise use data, AECO_STUDY_ROOT, or /.')
     args = parser.parse_args(argv)
     stage = Usd.Stage.Open(str(args.stage))
     if not stage or stage.GetCompositionErrors():
         parser.error('Input stage does not compose.')
     if args.command == 'convert':
-        convert_sources(args.source_dir, args.output_dir, stage, json.loads(args.type_map.read_text()))
+        try:
+            convert_sources(args.source_dir, args.output_dir, stage, json.loads(args.type_map.read_text()),
+                            study_root=args.study_root)
+        except ValueError as exc:
+            parser.error(str(exc))
         return 0
     if not specifications(stage):
         parser.error('No active AecoSpecification records; compose requirement layers before checking.')

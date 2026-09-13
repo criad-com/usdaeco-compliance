@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.1
+
+- Add `AECO_STUDY_ROOT` (default `/`) and converter/example CLI overrides.
+  Suite specifications and drawing sheets live under `/Studies/compliance`;
+  cameras live under `/Renders/compliance`. Define `Studies` as a plain Scope.
+- Relocate copies of example inputs while preserving layer authority and
+  project-catalog targets. Read specification locations from composed data and
+  presentation bands from evaluated relationship targets.
+- Retain the exact v0.2.0 authored-opinion fingerprint and producer version.
+  Document that moving specification prims requires recomputation; unchanged
+  default example inputs, outputs, crate, images and digest are preserved.
+- Exercise conversion, the hook, validators, staleness and plugin-free CLI
+  checks on the pinned v0.4.8 iris delivery and v0.5.2 full suite delivery.
+- Verify 49 checks, 0 failed; structure 29/0; 64 pytest tests, 0 skipped.
+  All 24 committed input/publication artifacts remain byte-identical.
+  One Nix attempt reached uncached dependency builds; packaging is not proven.
+
 ## 0.2.0
 
 - Fingerprint authored input opinions after USD composition, including authored
